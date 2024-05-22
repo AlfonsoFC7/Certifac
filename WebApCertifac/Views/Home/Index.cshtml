@@ -1,0 +1,49 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+
+    <form action="/Home/IndexR" method="post">
+
+        <input type="text" class="form-control" name="NombreAddenda" placeholder="Nombre" required>
+        <br />
+        <input type="text" class="form-control" name="Estado2" placeholder="Estado" required>
+        <br />
+        <button class="btn btn-primary" type="submit">
+            BUSCAR
+        </button>
+    </form>
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Clave</th>
+                    <th>Nombre</th>
+                    <th width="250" style="width:250px;">Xml</th>
+                    <th>Fecha</th>
+                    <th>Usuario</th>
+                    <th>Estado</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (ViewBag.Addendas != null)
+                {
+                    @foreach (var itemm in ViewBag.Addendas)
+                    {
+                        <tr>
+                            <td>@itemm.IdAddenda</td>
+                            <td>@itemm.NombreAddenda</td>
+                            <td style="width:250px;" width="250">@itemm.XML</td>
+                            <td>@itemm.FechaModificacion</td>
+                            <td>@itemm.Usuario</td>
+                            <td>@itemm.Estado</td>
+                        </tr>
+                    }
+                }
+
+
+            </tbody>
+        </table>
+    </div>
+</div>
